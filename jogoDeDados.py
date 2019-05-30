@@ -9,21 +9,21 @@ class jodoDeDados:
         self._log = []
 
     def jogar(self, nome):
-        partida = logJogo("",0,"")
         self._nome = nome
         self._dado1.lancar()
         self._dado2.lancar()
         soma = self._dado1.getFace() + self._dado2.getFace()
         if soma == 7:
-            partida.setNome(nome)
-            partida.setPontos(7)
-            partida.setResultado("Ganhou")
+            partida = logJogo(nome,soma,"Ganhou")
+            self._log.append(partida)
+            return True
         else:
-            partida.setNome(nome)
-            partida.setPontos(soma)
-            partida.setResultado("Perdeu")
-        self._log.append(partida)
-        print(partida.getResultado())
+            partida = logJogo(nome, soma, "Perdeu")
+            self._log.append(partida)
+            return False
+
     def obterHistoricoJogos(self):
+        historico = ""
         for i in self._log:
-            print("%s %s com %s pontos"%(i.getNome(),i.getResultado(),i.getPontos()))
+            historico+= i.getNome() + " " + i.getResultado() + " com " + str(i.getPontos()) + "\n"
+        return historico

@@ -1,5 +1,5 @@
 class logJogo:
-    def __init__(self,nome,pontos,resultado):
+    def __init__(self,nome="",pontos=0,resultado=""):
         self._nome = nome
         self._pontos = pontos
         self._resultado = resultado

@@ -4,9 +4,14 @@ while True:
     print("1-Jogar\n2-Historico\n0-Sair")
     n = int(input("Opção Selecionada:"))
     if n == 1:
-        jogador.jogar(input("Nome do jogador:"))
+        resultado = jogador.jogar(input("Nome do jogador:"))
+        if resultado:
+            print("Parabens")
+        else:
+            print("Deu ruim")
     elif n == 2:
-        jogador.obterHistoricoJogos()
+        historico = jogador.obterHistoricoJogos()
+        print(historico)
     else:
         break
 
